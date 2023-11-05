@@ -31,4 +31,13 @@ public class UserRegistration {
         }
         return false;
     }
+
+    public boolean validateMobileNumber(String mobileNumber) {
+        if (mobileNumber != null && mobileNumber.matches("^91\\s\\d{10}$")){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
