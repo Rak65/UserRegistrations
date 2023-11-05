@@ -5,9 +5,17 @@ import org.junit.jupiter.api.Test;
 
 public class UserRegistrationTest {
     @Test
-    public void testUserRegistration(){
-        String name = "Welcome to User Registration Form";
+    public void testValidFirstName(){
+        UserRegistration userRegistration= new UserRegistration();
+        Assertions.assertTrue(userRegistration.validateFirstName("Rakesh"));
+        Assertions.assertTrue(userRegistration.validateFirstName("Sumesh"));
+    }
+    @Test
+    public void testInvalidFirstName(){
         UserRegistration userRegistration = new UserRegistration();
-        Assertions.assertEquals(name,userRegistration.checkUserRegistration("UserRegistration"));
+        Assertions.assertFalse(userRegistration.validateFirstName("R"));
+        Assertions.assertFalse(userRegistration.validateFirstName("Ra"));
+        Assertions.assertFalse(userRegistration.validateFirstName("rakesh"));
+        Assertions.assertFalse(userRegistration.validateFirstName("123"));
     }
 }
