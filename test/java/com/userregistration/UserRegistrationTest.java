@@ -18,4 +18,18 @@ public class UserRegistrationTest {
         Assertions.assertFalse(userRegistration.validateFirstName("rakesh"));
         Assertions.assertFalse(userRegistration.validateFirstName("1234"));
     }
+    @Test
+    public void testValidLastName(){
+        UserRegistration userRegistration= new UserRegistration();
+        Assertions.assertTrue(userRegistration.validateLastName("Rakesh"));
+        Assertions.assertTrue(userRegistration.validateLastName("Sumesh"));
+    }
+    @Test
+    public void testInvalidLastName(){
+        UserRegistration userRegistration = new UserRegistration();
+        Assertions.assertFalse(userRegistration.validateLastName("R"));
+        Assertions.assertFalse(userRegistration.validateLastName("Ra"));
+        Assertions.assertFalse(userRegistration.validateLastName("rakesh"));
+        Assertions.assertFalse(userRegistration.validateLastName("1234"));
+    }
 }
