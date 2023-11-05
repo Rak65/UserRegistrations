@@ -55,4 +55,22 @@ public class UserRegistrationTest {
         Assertions.assertFalse(userRegistration.validateEmail("abc.gmail.com.1a"));
         Assertions.assertFalse(userRegistration.validateEmail("abc.gmail.com.aa.au"));
     }
+    @Test
+    public void testValidMobileNumber(){
+        UserRegistration userRegistration = new UserRegistration();
+        Assertions.assertTrue(userRegistration.validateMobileNumber("91 7988984543"));
+        Assertions.assertTrue(userRegistration.validateMobileNumber("91 7958984543"));
+        Assertions.assertTrue(userRegistration.validateMobileNumber("91 7968984543"));
+        Assertions.assertTrue(userRegistration.validateMobileNumber("91 7984684543"));
+        Assertions.assertTrue(userRegistration.validateMobileNumber("91 7988947543"));
+    }
+    @Test
+    public void testInValidMobileNumber(){
+        UserRegistration userRegistration = new UserRegistration();
+        Assertions.assertFalse(userRegistration.validateEmail("94633978"));
+        Assertions.assertFalse(userRegistration.validateEmail("94633978"));
+        Assertions.assertFalse(userRegistration.validateEmail("91 94633978"));
+        Assertions.assertFalse(userRegistration.validateEmail("913494633978"));
+        Assertions.assertFalse(userRegistration.validateEmail("91 94633978"));
+    }
 }
