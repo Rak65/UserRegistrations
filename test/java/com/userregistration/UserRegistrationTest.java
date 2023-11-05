@@ -16,6 +16,6 @@ public class UserRegistrationTest {
         Assertions.assertFalse(userRegistration.validateFirstName("R"));
         Assertions.assertFalse(userRegistration.validateFirstName("Ra"));
         Assertions.assertFalse(userRegistration.validateFirstName("rakesh"));
-        Assertions.assertFalse(userRegistration.validateFirstName("123"));
+        Assertions.assertFalse(userRegistration.validateFirstName("1234"));
     }
 }
