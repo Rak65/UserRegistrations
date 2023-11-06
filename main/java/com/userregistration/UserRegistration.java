@@ -40,4 +40,13 @@ public class UserRegistration {
             return false;
         }
     }
+    public boolean validatePassword(String password){
+        return password != null &&
+                password.length() >= 8 &&
+                password.matches(".*[A-Z].*") &&
+                password.matches(".*\\d.*") &&
+                password.matches(".*[!@#$%^&*()].*") &&
+                !password.matches(".*[!@#$%^&*()].*[!@#$%^&*()].*");
+    }
+
 }
