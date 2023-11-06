@@ -2,6 +2,8 @@ package com.userregistration;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class UserRegistrationTest {
     @Test
@@ -87,5 +89,19 @@ public class UserRegistrationTest {
         Assertions.assertFalse(userRegistration.validatePassword("nouppercase1!"));
         Assertions.assertFalse(userRegistration.validatePassword("toomany!!!specials"));
         Assertions.assertFalse(userRegistration.validatePassword("NoSpecials123"));
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "abc@bl.co, true",
+            "abc.xyz@bl.co.in, true",
+            "invalid-email, false",
+            "missing@tld., false",
+            "too@many@ats, false",
+            "abc.xyz@bl.co.in, true"
+    })
+    public void testEmailValidation(String email, boolean expected) {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean isValid = userRegistration.validateEmail(email);
+        Assertions.assertEquals(expected, isValid);
     }
 }
