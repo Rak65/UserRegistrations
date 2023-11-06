@@ -73,4 +73,19 @@ public class UserRegistrationTest {
         Assertions.assertFalse(userRegistration.validateEmail("913494633978"));
         Assertions.assertFalse(userRegistration.validateEmail("91 94633978"));
     }
+    @Test
+    public void testValidPassword(){
+        UserRegistration userRegistration = new UserRegistration();
+        Assertions.assertTrue(userRegistration.validatePassword("PassDord1!"));
+        Assertions.assertTrue(userRegistration.validatePassword("P@ssw1rW"));
+    }
+    @Test
+    public void testInvalidPassword(){
+        UserRegistration userRegistration = new UserRegistration();
+        Assertions.assertFalse(userRegistration.validatePassword("short"));
+        Assertions.assertFalse(userRegistration.validatePassword("NoDigits@"));
+        Assertions.assertFalse(userRegistration.validatePassword("nouppercase1!"));
+        Assertions.assertFalse(userRegistration.validatePassword("toomany!!!specials"));
+        Assertions.assertFalse(userRegistration.validatePassword("NoSpecials123"));
+    }
 }
